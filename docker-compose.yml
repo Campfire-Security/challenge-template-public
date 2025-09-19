@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    image: ghcr.io/campfire-securify/challenge-template-public
+    ports:
+      - "8081:80"
+    environment:
+      - SOME_ENV_VAR=some_value
+    restart: unless-stopped

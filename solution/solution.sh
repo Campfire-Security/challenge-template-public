@@ -1,0 +1,1 @@
+curl "http://container-ip:port/"

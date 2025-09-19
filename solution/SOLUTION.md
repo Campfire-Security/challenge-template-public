@@ -1,0 +1,1 @@
+Curl the containers ip/domain on port 80 to get the flag

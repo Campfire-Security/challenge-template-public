@@ -1,0 +1,37 @@
+name: Webserver access
+tag: we_webserver-access
+static: false
+od: |
+  ### Webserver access
+
+  The user is given access to a webserver. The user should be able to find a flag on the webserver.
+  **Prerequisites**
+
+  - Basic knowledge of webservers
+  - Basic knowledge of navigating a webserver
+  - Basic knowledge of curl
+
+  **Outcome**
+    - Find the flag on the webserver
+  
+  *Solution*
+  ```
+    curl "http://container-ip:port/"
+  ```
+instance:
+  - image: ghcr.io/campfire-security/challenge-template-public
+    memory: 85
+    cpu: 0.1
+    env:
+      - env: SOME_ENV_VAR
+        value: some_value
+    dns:
+      - name: webserver.cfire
+        type: A
+    flags:
+      - tag: xss-1
+        name: Webserver access
+        points: 65
+        category: Web exploitation
+        td: | #Markdown
+          Can you find the flag on my super secret webserver?
