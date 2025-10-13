@@ -29,7 +29,7 @@ instance:
       - name: webserver.cfire
         type: A
     flags:
-      - tag: xss-1
+      - tag: webserver-access-1
         name: Webserver access
         points: 65
         category: Web exploitation
