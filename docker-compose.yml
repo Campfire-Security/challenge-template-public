@@ -4,7 +4,7 @@ services:
     build:
       context: ./src
       dockerfile: Dockerfile
-    image: ghcr.io/campfire-securify/challenge-template-public
+    image: ghcr.io/campfire-security/challenge-template-public
     ports:
       - "8081:80"
     environment:
