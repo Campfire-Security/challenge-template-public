@@ -1,12 +1,38 @@
-version: '3.8'
+# Docker Compose file is used both for local testing and building the challenge images in github actions.
+# Make sure to keep the image names in sync with challenge.yml and the dockerfile paths correctly set.
+
+# For local testing, run `docker-compose up --build` in the challenge root directory.
+# This will build and start the services defined below.
+# Make sure not to add any other docker-compose configurations like volumes etc. as needed for local testing.
+# Environment variables can be set in the docker compose file for local testing. BUT make sure to add these to challenge.yml as well if they are needed for the challenge to function.
+# Services will be networked together using the `test-net` network for local testing.
+# The Depends_on directive is not possible to use in production so avoid using it while developing challenges.
+
+# Always make sure to make docker files for each service including databases etc.
+
 services:
-  web:
+  vulnerable: # name of the service do note use spaces or special characters
     build:
-      context: ./src
-      dockerfile: Dockerfile
-    image: ghcr.io/campfire-security/challenge-template-public
+      context: ./src/service-1 # Path to the service's dockerfile
+      dockerfile: Dockerfile # Name of the dockerfile used for building the service.
+    image: "ghcr.io/campfire-security/challenge-template:service1" # Change to ghcr.io/campfire-security/<repo-name>:your-service-name. This needs to be used in challenge.yml
+    container_name: service1 # Must be the same as the end of the image name i.e service1
     ports:
-      - "8081:80"
-    environment:
-      - SOME_ENV_VAR=some_value
-    restart: unless-stopped
+      - "8080:80" # port mapping used for local testing, make sure to expose the correct ports in your Dockerfile
+    networks: # only used for local testing
+      - test-net # only used for local testing
+  secure: # name of the service do note use spaces or special characters
+    build:
+      context: ./src/service-2 # Path to the service's dockerfile
+      dockerfile: Dockerfile # Name of the dockerfile used for building the service.
+    image: "ghcr.io/campfire-security/challenge-template:service2" # Change to ghcr.io/campfire-security/<repo-name>:your-service-name. This needs to be used in challenge.yml
+    container_name: service2 # Must be the same as the end of the image name i.e service1
+    ports:
+      - "8081:80" # port mapping used for local testing, make sure to expose the correct ports in your Dockerfile
+    networks: # only used for local testing
+      - test-net
+
+networks: # only used for local testing
+  test-net: # only used for local testing
+    driver: bridge # only used for local testing
+

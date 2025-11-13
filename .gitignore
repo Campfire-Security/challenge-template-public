@@ -1,1 +1,5 @@
-# Whatever you want to ignore like node_modules etc.
+# Whatever you want to ignore like node_modules etc..DS_Store
+.DS_Store
+.venv
+__pycache__/
+# Add your custom ignores below this line

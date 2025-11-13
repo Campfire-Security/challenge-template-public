@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            background: #f5f5f5;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin: 0;
+        }
+       .flag {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            background: #c27777;
+        }
+        .flag h1 {
+            font-size: 3rem;
+            color: #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Service 2</h1>
+    
+    </section>
+
+    <section class="flag">
+         <h1 id="flag" style="cursor:pointer;">FIRE{example_flag_123456}</h1>
+        <script>
+            document.getElementById('flag').addEventListener('click', function() {
+            navigator.clipboard.writeText(this.textContent);
+            });
+        </script>
+     </section>
+</body>
+</html>
