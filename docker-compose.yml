@@ -8,6 +8,8 @@
 # Services will be networked together using the `test-net` network for local testing.
 # The Depends_on directive is not possible to use in production so avoid using it while developing challenges.
 
+# NB: Volumes are not supported!
+
 # Always make sure to make docker files for each service including databases etc.
 
 services:
